@@ -18,4 +18,19 @@ class Indeks extends REST_Controller{
             $this->response(array('error' => 'Couldn\'t find any users!'), 404);
         }
 	}
+	function indeks_get()
+	{
+		$this->load->model('m_indeks');
+		$objIndeks = $this->m_indeks->get_all_indeks();
+
+		if($objIndeks)
+		{
+            $this->response($objIndeks, 200);
+        }
+
+        else
+        {
+            $this->response(array('error' => 'Couldn\'t find any users!'), 404);
+        }
+	}
 } 
