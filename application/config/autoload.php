@@ -122,7 +122,7 @@ $autoload['model'] = array();
 |
 */
 
-$autoload['sparks'] = array('example-spark/1.0.0');
+$autoload['sparks'] = array('example-spark/1.0.0','gas/2.1.1');
 
 
 /* End of file autoload.php */
