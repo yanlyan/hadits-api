@@ -18,4 +18,32 @@ class Imam extends REST_Controller{
             $this->response(array('error' => 'Couldn\'t find any users!'), 404);
         }
 	}
+
+	function one_get($intId)
+	{
+		$objImam = Model\biografi\Imam::find($intId);
+
+		if($objImam)
+		{
+			$this->response($objImam, 200);
+		}
+		else
+		{
+			 $this->response(array('error' => 'Couldn\'t find any users!'), 404);
+		}
+	}
+
+	function by_name_get($strName)
+	{
+		$objImam = Model\biografi\Imam::find_by_bioImam($strName);
+
+		if($objImam)
+		{
+			$this->response($objImam, 200);
+		}
+		else
+		{
+			 $this->response(array('error' => 'Couldn\'t find any users!'), 404);
+		}
+	}
 }
