@@ -6,11 +6,11 @@ class Indeks extends REST_Controller{
 	function all_get()
 	{
 		// page a new contact object
-		$objIndeks = Model\ind\Lists::all();
+		$objIndeks = Model\ind\Lists::result()->all();
 
 		if($objIndeks)
 		{
-            $this->response($objIndeks, 200);
+            $this->response($objIndeks->to_array(), 200);
         }
 
         else
@@ -21,11 +21,11 @@ class Indeks extends REST_Controller{
 
 	function one_get($intId)
 	{
-		$objIndeks = Model\ind\Lists::find($intId);
+		$objIndeks = Model\ind\Lists::result()->find($intId);
 
 		if($objIndeks)
 		{
-			$this->response($objIndeks, 200);
+			$this->response($objIndeks->to_array(), 200);
 		}
 		else
 		{
@@ -35,11 +35,11 @@ class Indeks extends REST_Controller{
 
 	function by_judul_get($strJudul)
 	{
-		$objIndeks = Model\ind\Lists::find_by_Judul_Indeks($strJudul);
+		$objIndeks = Model\ind\Lists::result()->find_by_Judul_Indeks($strJudul);
 
 		if($objIndeks)
 		{
-			$this->response($objIndeks, 200);
+			$this->response($objIndeks->to_array(), 200);
 		}
 		else
 		{
