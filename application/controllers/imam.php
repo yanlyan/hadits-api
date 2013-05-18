@@ -6,11 +6,11 @@ class Imam extends REST_Controller{
 	function all_get()
 	{
 		// page a new contact object
-		$objImam = Model\biografi\Imam::all();
+		$objImam = Model\biografi\Imam::result()->all();
 
 		if($objImam)
 		{
-            $this->response($objImam, 200);
+            $this->response($objImam->to_array(), 200);
         }
 
         else
