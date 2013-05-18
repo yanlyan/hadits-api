@@ -21,11 +21,11 @@ class Imam extends REST_Controller{
 
 	function one_get($intId)
 	{
-		$objImam = Model\biografi\Imam::find($intId);
+		$objImam = Model\biografi\Imam::result()->find($intId);
 
 		if($objImam)
 		{
-			$this->response($objImam, 200);
+			$this->response($objImam->to_array(), 200);
 		}
 		else
 		{
@@ -35,11 +35,11 @@ class Imam extends REST_Controller{
 
 	function by_name_get($strName)
 	{
-		$objImam = Model\biografi\Imam::find_by_bioImam($strName);
+		$objImam = Model\biografi\Imam::result()->find_by_bioImam($strName);
 
 		if($objImam)
 		{
-			$this->response($objImam, 200);
+			$this->response($objImam->to_array(), 200);
 		}
 		else
 		{
