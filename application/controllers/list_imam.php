@@ -1,16 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require APPPATH.'/libraries/REST_Controller.php';
-class Indeks extends REST_Controller{
+class List_imam extends REST_Controller{
 
 	function all_get()
 	{
 		// page a new contact object
-		$objIndeks = Model\ind\Lists::result()->all();
+		$objList = Model\had\Imam::result()->all();
 
-		if($objIndeks)
+		if($objList)
 		{
-            $this->response($objIndeks->to_array(), 200);
+            $this->response($objList->to_array(), 200);
         }
 
         else
@@ -21,11 +21,11 @@ class Indeks extends REST_Controller{
 
 	function one_get($intId)
 	{
-		$objIndeks = Model\ind\Lists::result()->find($intId);
+		$objList = Model\had\Imam::result()->find($intId);
 
-		if($objIndeks)
+		if($objList)
 		{
-			$this->response($objIndeks->to_array(), 200);
+			$this->response($objList->to_array(), 200);
 		}
 		else
 		{
@@ -33,13 +33,13 @@ class Indeks extends REST_Controller{
 		}
 	}
 
-	function by_judul_get($strJudul)
+	function sorted_get()
 	{
-		$objIndeks = Model\ind\Lists::result()->find_by_Judul_Indeks($strJudul);
+		$objList = Model\had\Imam::result()->order_by('ImamSorting')->all();
 
-		if($objIndeks)
+		if($objList)
 		{
-			$this->response($objIndeks->to_array(), 200);
+			$this->response($objList->to_array(), 200);
 		}
 		else
 		{

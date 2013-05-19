@@ -6,7 +6,7 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Daftar extends ORM {
-	
+	public $primary_key = 'Kode_Rawi';
 	function _init()
 	{
 		self::$fields = array(

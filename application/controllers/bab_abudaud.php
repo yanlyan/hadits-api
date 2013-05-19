@@ -8,16 +8,15 @@ class Bab_abudaud extends REST_Controller{
 		// page a new contact object
 		if($limit == 0)
 		{
-			$objBabAbudaud = Model\databab\Abudaud::all();
+			$objBabAbudaud = Model\databab\Abudaud::result()->all();
 		}else
 		{
-			$objBabAbudaud = Model\databab\Abudaud::limit($limit)->all();	
+			$objBabAbudaud = Model\databab\Abudaud::result()->limit($limit)->all();	
 		}
-		
 
 		if($objBabAbudaud)
 		{
-            $this->response($objBabAbudaud, 200);
+            $this->response($objBabAbudaud->to_array(), 200);
         }
 
         else
@@ -28,11 +27,11 @@ class Bab_abudaud extends REST_Controller{
 
 	function by_id_bab_get($intId)
 	{
-		$objBabAbudaud = Model\databab\Abudaud::find_by_ID_Bab($intId);
+		$objBabAbudaud = Model\databab\Abudaud::result()->find_by_ID_Bab($intId);
 
 		if($objBabAbudaud)
 		{
-			$this->response($objBabAbudaud, 200);
+			$this->response($objBabAbudaud->to_array(), 200);
 		}
 		else
 		{
@@ -42,11 +41,11 @@ class Bab_abudaud extends REST_Controller{
 
 	function by_id_kitab_get($intId)
 	{
-		$objBabAbudaud = Model\databab\Abudaud::find_by_ID_Kitab($intId);
+		$objBabAbudaud = Model\databab\Abudaud::result()->find_by_ID_Kitab($intId);
 
 		if($objBabAbudaud)
 		{
-			$this->response($objBabAbudaud, 200);
+			$this->response($objBabAbudaud->to_array(), 200);
 		}
 		else
 		{
