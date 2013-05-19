@@ -9,7 +9,6 @@ class Abudaud extends ORM {
 	
 	function _init()
 	{
-
         self::$relationships = array (
             'kitab'          =>     ORM::belongs_to('\\Model\\Datakitab\\Abudaud')
         );
