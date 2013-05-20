@@ -6,11 +6,12 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Abudaud extends ORM {
-	
+	public $foreign_key = array('\\model\\datakitab\\abudaud' => 'ID_Kitab');
+	public $primary_key = 'ID_Bab';
 	function _init()
 	{
         self::$relationships = array (
-            'kitab'          =>     ORM::belongs_to('\\Model\\Datakitab\\Abudaud')
+            'kitab'          =>     ORM::belongs_to('\\Model\\Datakitab\\Abudaud'),
         );
 
 		self::$fields = array(
@@ -20,5 +21,16 @@ class Abudaud extends ORM {
 			'Bab_Arab' => ORM::field('string'),
 		);
 
+	}
+
+	public function get_list_bab_by_kitab($intKitab)
+	{
+		$arrResult = array();
+		$query =  $this->query("SELECT * FROM $this->table INNER JOIN datakitab_abudaud WHERE $this->table.ID_Kitab = datakitab_abudaud.ID_Kitab AND $this->table.ID_Kitab = '$intKitab'");
+		foreach ($query->result_array() as $item)
+		{
+			$arrResult[] = $item;
+		}
+		return $arrResult;
 	}
 }
