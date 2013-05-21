@@ -6,7 +6,9 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Abudaud extends ORM {
-	
+
+	public $primary_key = 'ID_Kitab';
+
 	function _init()
 	{
         self::$relationships = array (
@@ -18,6 +20,5 @@ class Abudaud extends ORM {
 			'Kitab_Indonesia' => ORM::field('char[255]'),
 			'Kitab_Arab' => ORM::field('char[255]'),
 		);
-
 	}
 }
