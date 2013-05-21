@@ -6,9 +6,8 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Abudaud extends ORM {
-
+	public $foreign_key = array('\\model\\datakitab\\abudaud' => 'ID_Kitab');
 	public $primary_key = 'ID_Bab';
-	public $foreign_key = array('\\model\\datakitab\\abudaud' => 'ID_Kitab', '\\model\\databab\\abudaud' => 'ID_Kitab');
 
 	function _init()
 	{

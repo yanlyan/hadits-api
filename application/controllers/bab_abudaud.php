@@ -2,16 +2,16 @@
 
 require APPPATH.'/libraries/REST_Controller.php';
 class Bab_abudaud extends REST_Controller{
-
+	
 	function all_get($limit)
 	{
 		// page a new contact object
 		if($limit == 0)
 		{
-			$objBabAbudaud = Model\databab\Abudaud::result()->all();
+			$objBabAbudaud = Model\datakitab\Abudaud::result()->all();
 		}else
 		{
-			$objBabAbudaud = Model\databab\Abudaud::result()->limit($limit)->all();	
+			$objBabAbudaud = Model\datakitab\Abudaud::result()->limit($limit)->all();	
 		}
 
 		if($objBabAbudaud)
@@ -46,6 +46,19 @@ class Bab_abudaud extends REST_Controller{
 		if($objBabAbudaud)
 		{
 			$this->response($objBabAbudaud->to_array(), 200);
+		}
+		else
+		{
+			 $this->response(array('error' => 'Couldn\'t find any users!'), 404);
+		}
+	}
+
+	function list_bab_get($intKitab)
+	{
+		$objBabAbudaud = Model\databab\Abudaud::result()->make()->get_list_bab_by_kitab($intKitab);
+		if($objBabAbudaud)
+		{
+			$this->response($objBabAbudaud, 200);
 		}
 		else
 		{
