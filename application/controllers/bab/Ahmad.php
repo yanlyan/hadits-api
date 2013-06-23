@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * abudaud bab
+ * ahmad bab
  *
  * @package    Controller\Bab
  * @author     Hadits API Dev
@@ -10,7 +10,7 @@
  */
 
 require APPPATH.'/libraries/REST_Controller.php';
-class abudaud extends REST_Controller{
+class ahmad extends REST_Controller{
 
 
 	function __construct()
@@ -19,7 +19,7 @@ class abudaud extends REST_Controller{
 		/**
 		* @var  Set devalut orm and response variable
 		*/
-		$this->orm 			= new Model\databab\Abudaud();
+		$this->orm 			= new Model\databab\Ahmad();
 		$this->arrResponse 	= array();
 	}
 
@@ -28,19 +28,19 @@ class abudaud extends REST_Controller{
 		// page a new contact object
 		if($limit == 0)
 		{
-			$objBabAbudaud = $this->orm->all();
+			$objBabAhmad = $this->orm->all();
 		}else
 		{
-			$objBabAbudaud = $this->orm->limit($limit)->all();	
+			$objBabAhmad = $this->orm->limit($limit)->all();	
 		}
-		foreach ($objBabAbudaud as $key => $value) {
+		foreach ($objBabAhmad as $key => $value) {
 			// Pasrse data in arrResponse
 			$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
 			$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
 			$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
 		}
 		
-		if($objBabAbudaud)
+		if($objBabAhmad)
 		{
 			$this->response($this->arrResponse, 200);
         }
@@ -60,17 +60,18 @@ class abudaud extends REST_Controller{
 	function id_get($intId = 0)
 	{
 		// Find in database with id
-		$objBabAbudaud = $this->orm->find($intId);
+
+		$objBabAhmad = $this->orm->find($intId);
 
 		// Pasrse data in arrResponse
-		$this->arrResponse['id_kitab'] 			= $objBabAbudaud->ID_Kitab;
-		$this->arrResponse['id_bab'] 			= $objBabAbudaud->ID_Bab;
-		$this->arrResponse['bab_indonesia'] 	= $objBabAbudaud->Bab_Indonesia;
-		$this->arrResponse['bab_arab'] 			= $objBabAbudaud->Bab_Arab;
-		$this->arrResponse['kitab_indonesia'] 	= $objBabAbudaud->kitab()->Kitab_Indonesia;
-		$this->arrResponse['kitab_arab'] 		= $objBabAbudaud->kitab()->Kitab_Arab;
+		$this->arrResponse['id_kitab'] 			= $objBabAhmad->ID_Kitab;
+		$this->arrResponse['id_bab'] 			= $objBabAhmad->ID_Bab;
+		$this->arrResponse['bab_indonesia'] 	= $objBabAhmad->Bab_Indonesia;
+		$this->arrResponse['bab_arab'] 			= $objBabAhmad->Bab_Arab;
+		$this->arrResponse['kitab_indonesia'] 	= $objBabAhmad->kitab()->Kitab_Indonesia;
+		$this->arrResponse['kitab_arab'] 		= $objBabAhmad->kitab()->Kitab_Arab;
 
-		if($objBabAbudaud)
+		if($objBabAhmad)
 		{
 			$this->response($this->arrResponse, 200);
 		}
@@ -83,19 +84,19 @@ class abudaud extends REST_Controller{
 	function idkitab_get($intId = 0)
 	{
 		// Find in database with id
-		$objBabAbudaud = $this->orm->find_by_ID_Kitab($intId);
+		$objBabAhmad = $this->orm->find_by_ID_Kitab($intId);
 
-		$this->arrResponse['id_kitab']	 		= $objBabAbudaud[0]->ID_Kitab;
-		$this->arrResponse['kitab_indonesia']	= $objBabAbudaud[0]->kitab()->Kitab_Indonesia;
-		$this->arrResponse['kitab_arab'] 		= $objBabAbudaud[0]->kitab()->Kitab_Arab;
-		foreach ($objBabAbudaud as $key => $value) {
+		$this->arrResponse['id_kitab']	 		= $objBabAhmad[0]->ID_Kitab;
+		$this->arrResponse['kitab_indonesia']	= $objBabAhmad[0]->kitab()->Kitab_Indonesia;
+		$this->arrResponse['kitab_arab'] 		= $objBabAhmad[0]->kitab()->Kitab_Arab;
+		foreach ($objBabAhmad as $key => $value) {
 			// Pasrse data in arrResponse
 			$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
 			$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
 			$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
 		}
 
-		if($objBabAbudaud)
+		if($objBabAhmad)
 		{
 			$this->response($this->arrResponse, 200);
 		}
