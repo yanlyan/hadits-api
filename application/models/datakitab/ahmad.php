@@ -11,7 +11,7 @@ class Ahmad extends ORM {
 
 	function _init()
 	{
-		 self::$relationships = array (
+		self::$relationships = array (
             'bab'          =>     ORM::has_many('\\Model\\Databab\\Ahmad')
         );
 		self::$fields = array(
