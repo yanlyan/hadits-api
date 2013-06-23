@@ -17,7 +17,7 @@ class malik extends REST_Controller{
 	{
 		parent::__construct();
 		/**
-		* @var  Set devalut orm and response variable
+		* @var  Set default orm and response variable
 		*/
 		$this->orm 			= new Model\databab\Malik();
 		$this->arrResponse 	= array();
@@ -62,16 +62,15 @@ class malik extends REST_Controller{
 		// Find in database with id
 		$objBabMalik = $this->orm->find($intId);
 
-		// Pasrse data in arrResponse
-		$this->arrResponse['id_kitab'] 			= $objBabMalik->ID_Kitab;
-		$this->arrResponse['id_bab'] 			= $objBabMalik->ID_Bab;
-		$this->arrResponse['bab_indonesia'] 	= $objBabMalik->Bab_Indonesia;
-		$this->arrResponse['bab_arab'] 			= $objBabMalik->Bab_Arab;
-		$this->arrResponse['kitab_indonesia'] 	= $objBabMalik->kitab()->Kitab_Indonesia;
-		$this->arrResponse['kitab_arab'] 		= $objBabMalik->kitab()->Kitab_Arab;
-
 		if($objBabMalik)
 		{
+			// Pasrse data in arrResponse
+			$this->arrResponse['id_kitab'] 			= $objBabMalik->ID_Kitab;
+			$this->arrResponse['id_bab'] 			= $objBabMalik->ID_Bab;
+			$this->arrResponse['bab_indonesia'] 	= $objBabMalik->Bab_Indonesia;
+			$this->arrResponse['bab_arab'] 			= $objBabMalik->Bab_Arab;
+			$this->arrResponse['kitab_indonesia'] 	= $objBabMalik->kitab()->Kitab_Indonesia;
+			$this->arrResponse['kitab_arab'] 		= $objBabMalik->kitab()->Kitab_Arab;
 			$this->response($this->arrResponse, 200);
 		}
 		else
@@ -84,19 +83,17 @@ class malik extends REST_Controller{
 	{
 		// Find in database with id
 		$objBabMalik = $this->orm->find_by_ID_Kitab($intId);
-
-		$this->arrResponse['id_kitab']	 		= $objBabMalik[0]->ID_Kitab;
-		$this->arrResponse['kitab_indonesia']	= $objBabMalik[0]->kitab()->Kitab_Indonesia;
-		$this->arrResponse['kitab_arab'] 		= $objBabMalik[0]->kitab()->Kitab_Arab;
-		foreach ($objBabMalik as $key => $value) {
-			// Pasrse data in arrResponse
-			$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
-			$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
-			$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
-		}
-
 		if($objBabMalik)
 		{
+			$this->arrResponse['id_kitab']	 		= $objBabMalik[0]->ID_Kitab;
+			$this->arrResponse['kitab_indonesia']	= $objBabMalik[0]->kitab()->Kitab_Indonesia;
+			$this->arrResponse['kitab_arab'] 		= $objBabMalik[0]->kitab()->Kitab_Arab;
+			foreach ($objBabMalik as $key => $value) {
+				// Pasrse data in arrResponse
+				$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
+				$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
+				$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
+			}
 			$this->response($this->arrResponse, 200);
 		}
 		else

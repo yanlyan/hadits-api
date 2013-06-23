@@ -83,18 +83,19 @@ class muslim extends REST_Controller{
 		// Find in database with id
 		$objBabMuslim = $this->orm->find_by_ID_Kitab($intId);
 
-		$this->arrResponse['id_kitab']	 		= $objBabMuslim[0]->ID_Kitab;
-		$this->arrResponse['kitab_indonesia']	= $objBabMuslim[0]->kitab()->Kitab_Indonesia;
-		$this->arrResponse['kitab_arab'] 		= $objBabMuslim[0]->kitab()->Kitab_Arab;
-		foreach ($objBabMuslim as $key => $value) {
-			// Pasrse data in arrResponse
-			$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
-			$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
-			$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
-		}
+		
 
 		if($objBabMuslim)
 		{
+			$this->arrResponse['id_kitab']	 		= $objBabMuslim[0]->ID_Kitab;
+			$this->arrResponse['kitab_indonesia']	= $objBabMuslim[0]->kitab()->Kitab_Indonesia;
+			$this->arrResponse['kitab_arab'] 		= $objBabMuslim[0]->kitab()->Kitab_Arab;
+			foreach ($objBabMuslim as $key => $value) {
+				// Pasrse data in arrResponse
+				$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
+				$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
+				$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
+			}
 			$this->response($this->arrResponse, 200);
 		}
 		else
