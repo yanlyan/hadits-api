@@ -6,9 +6,12 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Tirmidzi extends ORM {
-	
+	public $primary_key = 'ID_Kitab';
 	function _init()
 	{
+		self::$relationships = array (
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Tirmidzi')
+        );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),
 			'Kitab_Indonesia' => ORM::field('char[255]'),
