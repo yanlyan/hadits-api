@@ -13,6 +13,7 @@ class Abudaud extends ORM {
 	{
         self::$relationships = array (
             'kitab'          =>     ORM::belongs_to('\\Model\\Datakitab\\Abudaud'),
+            'tema'			 =>		ORM::has_many('\\Model\\Tema\\Abudaud'),
         );
 
 		self::$fields = array(

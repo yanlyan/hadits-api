@@ -12,6 +12,7 @@ class Malik extends ORM {
 	{
 		self::$relationships = array (
             'kitab'          =>     ORM::belongs_to('\\Model\\Datakitab\\Malik'),
+            'tema'			 =>		ORM::has_many('\\Model\\Tema\\Malik'),
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

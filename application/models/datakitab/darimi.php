@@ -10,7 +10,8 @@ class Darimi extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Darimi')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Darimi'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Darimi')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

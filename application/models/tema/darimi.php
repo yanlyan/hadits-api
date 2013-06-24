@@ -6,9 +6,18 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Darimi extends ORM {
-	
+	public $foreign_key = array(
+									'\\model\\datakitab\\darimi' => 'ID_Kitab',
+									'\\model\\databab\\darimi' => 'ID_Bab',
+									'\\model\\Had\\darimi' => 'NoHdt'
+								);
 	function _init()
 	{
+		self::$relationships = array (
+            'kitab'          =>     ORM::belongs_to('\\Model\\Datakitab\\Darimi'),
+            'bab'            =>     ORM::belongs_to('\\Model\\Databab\\Darimi'),
+            'hadits'         =>     ORM::belongs_to('\\Model\\Had\\Darimi')
+        );
 		self::$fields = array(
 			'NoHdt' => ORM::field('int[11]'),
 			'Tema_Indonesia' => ORM::field('string'),

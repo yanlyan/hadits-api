@@ -11,7 +11,8 @@ class Bukhari extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Bukhari')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Bukhari'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Bukhari')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

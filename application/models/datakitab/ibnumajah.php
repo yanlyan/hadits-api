@@ -10,7 +10,8 @@ class Ibnumajah extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Ibnumajah')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Ibnumajah'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Ibnumajah')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

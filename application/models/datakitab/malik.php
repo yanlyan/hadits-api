@@ -10,7 +10,8 @@ class Malik extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Malik')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Malik'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Malik')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

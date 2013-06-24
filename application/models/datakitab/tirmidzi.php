@@ -10,7 +10,8 @@ class Tirmidzi extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Tirmidzi')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Tirmidzi'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Tirmidzi')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

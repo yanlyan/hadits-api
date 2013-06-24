@@ -11,6 +11,9 @@ class Imam extends ORM {
 
 	function _init()
 	{
+		self::$relationships = array (
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Imam'),
+        );
 		self::$fields = array(
 			'imamId' => ORM::field('auto[10]'),
 			'namaTabel' => ORM::field('char[255]'),

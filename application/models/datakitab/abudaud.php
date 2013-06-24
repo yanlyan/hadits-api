@@ -12,7 +12,8 @@ class Abudaud extends ORM {
 	function _init()
 	{
         self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Abudaud')
+            'bab'			=>     ORM::has_many('\\Model\\Databab\\Abudaud'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Abudaud'),
         );
 
 		self::$fields = array(

@@ -10,7 +10,8 @@ class Nasai extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Nasai')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Nasai'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Nasai')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),

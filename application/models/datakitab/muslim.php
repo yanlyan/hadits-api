@@ -10,7 +10,8 @@ class Muslim extends ORM {
 	function _init()
 	{
 		self::$relationships = array (
-            'bab'          =>     ORM::has_many('\\Model\\Databab\\Muslim')
+            'bab'          =>     ORM::has_many('\\Model\\Databab\\Muslim'),
+            'tema'			=>     ORM::has_many('\\Model\\Tema\\Muslim')
         );
 		self::$fields = array(
 			'ID_Kitab' => ORM::field('int[11]'),
