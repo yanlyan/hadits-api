@@ -38,6 +38,9 @@ class nasai extends REST_Controller{
 			$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
 			$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
 			$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
+			$this->arrResponse[$key]['kitab']['id_kitab'] = $value->ID_Kitab;
+			$this->arrResponse[$key]['kitab']['kitab_indonesia'] 	= $value->kitab()->Kitab_Indonesia;
+			$this->arrResponse[$key]['kitab']['kitab_arab'] 		= $value->kitab()->Kitab_Arab;
 		}
 		
 		if($objBabNasai)

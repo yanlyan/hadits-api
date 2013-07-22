@@ -6,7 +6,7 @@ use \Gas\Core;
 use \Gas\ORM;
 
 class Bukhari extends ORM {
-	
+	public $primary_key = 'NoHdt';
 	function _init()
 	{
 		self::$fields = array(
