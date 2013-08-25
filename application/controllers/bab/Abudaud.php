@@ -34,7 +34,7 @@ class abudaud extends REST_Controller{
 			$objBabAbudaud = $this->orm->limit($limit)->all();	
 		}
 		foreach ($objBabAbudaud as $key => $value) {
-			// Pasrse data in arrResponse
+			// Parse data in arrResponse
 			$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
 			$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
 			$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
@@ -85,6 +85,7 @@ class abudaud extends REST_Controller{
 	{
 		// Find in database with id
 		$objBabAbudaud = $this->orm->find_by_ID_Kitab($intId);
+		
 		if($objBabAbudaud)
 		{
 			$this->arrResponse['id_kitab']	 		= $objBabAbudaud[0]->ID_Kitab;
@@ -101,6 +102,36 @@ class abudaud extends REST_Controller{
 		else
 		{
 			 $this->response(array('error' => 'Couldn\'t find any users!'), 404);
+		}
+	}
+	function search_get($strKeyword, $limit = 0)
+	{
+
+		if($limit == 0)
+		{
+			$objBabAbudaud = $this->orm->like('bab_indonesia',$strKeyword,'bab_arab',$strKeyword)->all();	
+		}
+		else
+		{
+			$objBabAbudaud = $this->orm->like('bab_indonesia',$strKeyword,'bab_arab',$strKeyword)->limit($limit)->all();
+		}
+		
+		if($objBabAbudaud){
+			foreach ($objBabAbudaud as $key => $value) {
+				// Parse data in arrResponse
+				$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
+				$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
+				$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
+				$this->arrResponse[$key]['kitab']['id_kitab'] = $value->ID_Kitab;
+				$this->arrResponse[$key]['kitab']['kitab_indonesia'] 	= $value->kitab()->Kitab_Indonesia;
+				$this->arrResponse[$key]['kitab']['kitab_arab'] 		= $value->kitab()->Kitab_Arab;
+			}
+			$this->response($this->arrResponse);
+
+		}
+		else
+		{
+			$this->response(array('error' => 'Couldn\'t find any users!'), 404);
 		}
 	}
 }
