@@ -104,4 +104,34 @@ class malik extends REST_Controller{
 			 $this->response(array('error' => 'Couldn\'t find any users!'), 404);
 		}
 	}
+	function search_get($strKeyword, $limit = 0)
+	{
+		$strKeyword = urldecode($strKeyword);
+
+		$this->orm->like('bab_indonesia' ,$strKeyword);
+		$this->orm->or_like('bab_arab',$strKeyword);
+		
+		if($limit > 0) 
+			$this->orm->limit($limit);
+
+		$objBabMalik = $this->orm->all();
+		
+		if($objBabMalik){
+			foreach ($objBabMalik as $key => $value) {
+				// Parse data in arrResponse
+				$this->arrResponse[$key]['id_bab'] 			= $value->ID_Bab;
+				$this->arrResponse[$key]['bab_indonesia'] 	= $value->Bab_Indonesia;
+				$this->arrResponse[$key]['bab_arab'] 		= $value->Bab_Arab;
+				$this->arrResponse[$key]['kitab']['id_kitab'] = $value->ID_Kitab;
+				$this->arrResponse[$key]['kitab']['kitab_indonesia'] 	= $value->kitab()->Kitab_Indonesia;
+				$this->arrResponse[$key]['kitab']['kitab_arab'] 		= $value->kitab()->Kitab_Arab;
+			}
+			$this->response($this->arrResponse);
+
+		}
+		else
+		{
+			$this->response(array('error' => 'Couldn\'t find any users!'), 404);
+		}
+	}
 }
