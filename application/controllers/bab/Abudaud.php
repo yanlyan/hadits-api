@@ -106,15 +106,15 @@ class abudaud extends REST_Controller{
 	}
 	function search_get($strKeyword, $limit = 0)
 	{
+		$strKeyword = urldecode($strKeyword);
 
-		if($limit == 0)
-		{
-			$objBabAbudaud = $this->orm->like('bab_indonesia',$strKeyword,'bab_arab',$strKeyword)->all();	
-		}
-		else
-		{
-			$objBabAbudaud = $this->orm->like('bab_indonesia',$strKeyword,'bab_arab',$strKeyword)->limit($limit)->all();
-		}
+		$this->orm->like('bab_indonesia' ,$strKeyword);
+		$this->orm->or_like('bab_arab',$strKeyword);
+		
+		if($limit > 0) 
+			$this->orm->limit($limit);
+
+		$objBabAbudaud = $this->orm->all();
 		
 		if($objBabAbudaud){
 			foreach ($objBabAbudaud as $key => $value) {
